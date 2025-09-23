@@ -1,9 +1,19 @@
-import Navigation from "../components/Navigation"
-import Footer from "../components/Footer"
-import ScrollAnimations from "../components/ScrollAnimations"
-import { FaGraduationCap, FaUsers, FaBookOpen, FaStar, FaChartLine, FaHeart } from "react-icons/fa"
+"use client"
+
+import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
+import ScrollAnimations from "../components/ScrollAnimations";
+import RotatingText from "../components/RotatingText";
+import { FaGraduationCap, FaUsers, FaBookOpen, FaStar, FaChartLine, FaHeart } from "react-icons/fa";
 
 export default function HomePage() {
+  const rotatingTexts = [
+    "Where Learning Comes Alive",
+    "Nurturing Tomorrow's Leaders",
+    "Inspiring Curiosity Every Day",
+    "Building Brighter Futures Together"
+  ];
+
   return (
     <>
       <ScrollAnimations />
@@ -11,25 +21,48 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="hero">
-        <div className="container">
-          <div className="hero-content">
-            <h1 className="text-balance">Welcome to New Highlight School</h1>
-            <p className="text-balance">
-              Nurturing young minds through the Competency-Based Curriculum (CBC) model. Where learning meets innovation
-              and every child's potential shines bright.
-            </p>
-            <div className="flex gap-md justify-center">
-              <a href="/admissions" className="btn btn-primary pulse-animation">
-                Apply Now
-              </a>
-              <a href="/about" className="btn btn-secondary">
-                Learn More
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+  <div className="floating-shapes">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div className="container">
+    <div className="hero-content">
+      <h1 className="text-balance hero-main-title">
+        Welcome to New Highlight School
+      </h1>
+      
+      {/* Rotating Text Subtitle - Fixed to be visible */}
+      <div className="hero-subtitle-wrapper">
+        <RotatingText 
+          texts={[
+            "Where Learning Comes Alive",
+            "Nurturing Tomorrow's Leaders",
+            "Inspiring Curiosity Every Day",
+            "Building Brighter Futures Together"
+          ]} 
+          interval={3000} 
+        />
+      </div>
+      
+      <p className="text-balance hero-description">
+        Nurturing young minds through the Competency-Based Curriculum (CBC) model. 
+        Where learning meets innovation and every child's potential shines bright.
+      </p>
+      <div className="flex gap-md justify-center hero-actions">
+        <a href="/admissions" className="btn btn-primary pulse-animation">
+          Apply Now
+        </a>
+        <a href="/about" className="btn btn-secondary">
+          Learn More
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
+      {/* Rest of your page content remains the same */}
       {/* CBC Highlights Section */}
       <section className="section">
         <div className="container">
