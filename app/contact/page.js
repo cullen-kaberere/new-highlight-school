@@ -11,6 +11,10 @@ import {
   FaTwitter,
   FaInstagram,
   FaPaperPlane,
+  FaWhatsapp,
+  FaUser,
+  FaSchool,
+  FaComments
 } from "react-icons/fa"
 
 export default function ContactPage() {
@@ -18,9 +22,12 @@ export default function ContactPage() {
     name: "",
     email: "",
     phone: "",
-    subject: "",
+    studentGrade: "",
+    inquiryType: "",
     message: "",
   })
+
+  const [activeTab, setActiveTab] = useState("general")
 
   const handleChange = (e) => {
     setFormData({
@@ -31,14 +38,14 @@ export default function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Handle form submission here
     console.log("Form submitted:", formData)
-    alert("Thank you for your message! We will get back to you soon.")
+    alert("Thank you for your message! We'll contact you within 24 hours.")
     setFormData({
       name: "",
       email: "",
       phone: "",
-      subject: "",
+      studentGrade: "",
+      inquiryType: "",
       message: "",
     })
   }
@@ -47,95 +54,204 @@ export default function ContactPage() {
     <>
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="hero" style={{ padding: "100px 0 60px" }}>
+      {/* Compact Hero Section */}
+      <section className="contact-hero" style={{ 
+        background: 'linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-navy) 100%)',
+        padding: '120px 0 60px',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div className="floating-shapes">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
         <div className="container">
-          <div className="hero-content">
-            <h1 className="text-balance">Contact Us</h1>
-            <p className="text-balance">
-              Get in touch with us for admissions, inquiries, or to schedule a school visit
+          <div style={{ textAlign: 'center', position: 'relative', zIndex: 2 }}>
+            <div style={{ 
+              display: 'inline-block',
+              background: 'rgba(255,255,255,0.1)',
+              backdropFilter: 'blur(10px)',
+              padding: '1rem 2rem',
+              borderRadius: '50px',
+              marginBottom: '2rem',
+              border: '1px solid rgba(255,255,255,0.2)'
+            }}>
+              <span style={{ color: 'white', fontSize: '0.9rem', fontWeight: '600', letterSpacing: '1px' }}>
+                GET IN TOUCH
+              </span>
+            </div>
+            <h1 style={{ 
+              color: 'white', 
+              fontSize: '3rem', 
+              marginBottom: '1rem',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
+            }}>
+              Let's Start the Conversation
+            </h1>
+            <p style={{ 
+              color: 'rgba(255,255,255,0.9)', 
+              fontSize: '1.2rem',
+              maxWidth: '600px',
+              margin: '0 auto',
+              lineHeight: '1.6'
+            }}>
+              Ready to discover how New Highlight School can nurture your child's potential?
             </p>
           </div>
         </div>
       </section>
 
-      {/* Contact Information Section */}
-      <section className="section">
+      {/* Contact Methods Tabs */}
+      <section className="section" style={{ padding: '80px 0 40px' }}>
         <div className="container">
-          <h2 className="section-title">Get In Touch</h2>
-          <p className="section-subtitle">
-            We're here to answer your questions and help you learn more about New Highlight School
-          </p>
+          <div className="contact-tabs">
+            <button 
+              className={`tab-button ${activeTab === 'general' ? 'active' : ''}`}
+              onClick={() => setActiveTab('general')}
+            >
+              <FaComments />
+              General Inquiry
+            </button>
+            <button 
+              className={`tab-button ${activeTab === 'admissions' ? 'active' : ''}`}
+              onClick={() => setActiveTab('admissions')}
+            >
+              <FaSchool />
+              Admissions
+            </button>
+            <button 
+              className={`tab-button ${activeTab === 'visit' ? 'active' : ''}`}
+              onClick={() => setActiveTab('visit')}
+            >
+              <FaUser />
+              Schedule Visit
+            </button>
+          </div>
+        </div>
+      </section>
 
-          <div className="grid grid-2">
-            <div>
-              <div className="card mb-lg">
-                <div className="flex items-center gap-md mb-md">
-                  <FaMapMarkerAlt size={24} color="var(--primary-blue)" />
-                  <h3>Visit Us</h3>
+      {/* Main Contact Content */}
+      <section className="section" style={{ padding: '40px 0 80px' }}>
+        <div className="container">
+          <div className="contact-grid">
+            {/* Contact Information */}
+            <div className="contact-info">
+              <div className="info-card">
+                <div className="info-header">
+                  <div className="info-icon" style={{ background: 'linear-gradient(135deg, var(--primary-blue), #3b82f6)' }}>
+                    <FaMapMarkerAlt />
+                  </div>
+                  <h3 style={{ color: 'var(--primary-blue)' }}>Our Campus</h3>
                 </div>
-                <p>
-                  123 Education Street
-                  <br />
-                  Learning City, Nairobi
-                  <br />
-                  Kenya
-                </p>
+                <div className="info-content">
+                  <p style={{ color: 'var(--dark-navy)', fontWeight: '500' }}>
+                    123 Learning Avenue<br />
+                    Education District<br />
+                    Nairobi, Kenya
+                  </p>
+                  <div className="info-feature">
+                    <span>🚗 Ample Parking</span>
+                    <span>♿ Accessible</span>
+                    <span>🌳 Green Spaces</span>
+                  </div>
+                </div>
               </div>
 
-              <div className="card mb-lg">
-                <div className="flex items-center gap-md mb-md">
-                  <FaPhone size={24} color="var(--accent-red)" />
-                  <h3>Call Us</h3>
+              <div className="info-card">
+                <div className="info-header">
+                  <div className="info-icon" style={{ background: 'linear-gradient(135deg, var(--accent-red), #ef4444)' }}>
+                    <FaClock />
+                  </div>
+                  <h3 style={{ color: 'var(--accent-red)' }}>Office Hours</h3>
                 </div>
-                <p>
-                  Main Office: +254 700 123 456
-                  <br />
-                  Admissions: +254 700 123 457
-                  <br />
-                  Emergency: +254 700 123 458
-                </p>
+                <div className="info-content">
+                  <div className="time-slot">
+                    <span style={{ fontWeight: '600' }}>Mon - Fri</span>
+                    <span>7:30 AM - 5:00 PM</span>
+                  </div>
+                  <div className="time-slot">
+                    <span style={{ fontWeight: '600' }}>Saturday</span>
+                    <span>8:00 AM - 12:00 PM</span>
+                  </div>
+                  <div className="time-slot">
+                    <span style={{ fontWeight: '600' }}>Sunday</span>
+                    <span style={{ color: 'var(--accent-red)' }}>Closed</span>
+                  </div>
+                </div>
               </div>
 
-              <div className="card mb-lg">
-                <div className="flex items-center gap-md mb-md">
-                  <FaEnvelope size={24} color="var(--primary-blue)" />
-                  <h3>Email Us</h3>
+              <div className="info-card">
+                <div className="info-header">
+                  <div className="info-icon" style={{ background: 'linear-gradient(135deg, var(--primary-blue), #3b82f6)' }}>
+                    <FaPhone />
+                  </div>
+                  <h3 style={{ color: 'var(--primary-blue)' }}>Quick Connect</h3>
                 </div>
-                <p>
-                  General: info@newhighlightschool.ac.ke
-                  <br />
-                  Admissions: admissions@newhighlightschool.ac.ke
-                  <br />
-                  Principal: principal@newhighlightschool.ac.ke
-                </p>
+                <div className="info-content">
+                  <div className="contact-method">
+                    <FaPhone style={{ color: 'var(--primary-blue)' }} />
+                    <div>
+                      <span style={{ fontWeight: '600' }}>Main Office</span>
+                      <span style={{ color: 'var(--dark-navy)' }}>+254 700 123 456</span>
+                    </div>
+                  </div>
+                  <div className="contact-method">
+                    <FaWhatsapp style={{ color: 'var(--accent-red)' }} />
+                    <div>
+                      <span style={{ fontWeight: '600' }}>WhatsApp</span>
+                      <span style={{ color: 'var(--dark-navy)' }}>+254 700 123 457</span>
+                    </div>
+                  </div>
+                  <div className="contact-method">
+                    <FaEnvelope style={{ color: 'var(--primary-blue)' }} />
+                    <div>
+                      <span style={{ fontWeight: '600' }}>Email</span>
+                      <span style={{ color: 'var(--dark-navy)' }}>hello@newhighlightschool.ac.ke</span>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div className="card">
-                <div className="flex items-center gap-md mb-md">
-                  <FaClock size={24} color="var(--accent-red)" />
-                  <h3>Office Hours</h3>
+              {/* Social Media */}
+              <div className="social-card">
+                <h4 style={{ color: 'var(--dark-navy)', marginBottom: '1rem' }}>Follow Our Journey</h4>
+                <div className="social-links">
+                  <a href="#" className="social-link facebook">
+                    <FaFacebook />
+                    <span>Facebook</span>
+                  </a>
+                  <a href="#" className="social-link twitter">
+                    <FaTwitter />
+                    <span>Twitter</span>
+                  </a>
+                  <a href="#" className="social-link instagram">
+                    <FaInstagram />
+                    <span>Instagram</span>
+                  </a>
                 </div>
-                <p>
-                  Monday - Friday: 7:30 AM - 5:00 PM
-                  <br />
-                  Saturday: 8:00 AM - 12:00 PM
-                  <br />
-                  Sunday: Closed
-                </p>
               </div>
             </div>
 
-            <div>
-              <div className="card">
-                <h3 style={{ color: "var(--primary-blue)" }} className="mb-md">
-                  Send Us a Message
-                </h3>
-                <form onSubmit={handleSubmit}>
-                  <div className="mb-md">
-                    <label htmlFor="name" style={{ display: "block", marginBottom: "0.5rem", fontWeight: "500" }}>
-                      Full Name *
-                    </label>
+            {/* Contact Form */}
+            <div className="contact-form-container">
+              <div className="form-header">
+                <h2 style={{ color: 'var(--primary-blue)' }}>
+                  {activeTab === 'general' && 'General Inquiry'}
+                  {activeTab === 'admissions' && 'Admissions Process'}
+                  {activeTab === 'visit' && 'Schedule a Campus Tour'}
+                </h2>
+                <p style={{ color: 'var(--dark-navy)' }}>
+                  {activeTab === 'general' && 'Have questions? We\'d love to hear from you.'}
+                  {activeTab === 'admissions' && 'Start your child\'s educational journey with us.'}
+                  {activeTab === 'visit' && 'Experience our campus and meet our team.'}
+                </p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="contact-form">
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="name">Full Name *</label>
                     <input
                       type="text"
                       id="name"
@@ -143,23 +259,11 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      style={{
-                        width: "100%",
-                        padding: "0.75rem",
-                        border: "2px solid var(--border)",
-                        borderRadius: "var(--radius-md)",
-                        fontSize: "1rem",
-                        transition: "border-color 0.3s ease",
-                      }}
-                      onFocus={(e) => (e.target.style.borderColor = "var(--primary-blue)")}
-                      onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
+                      placeholder="Enter your full name"
                     />
                   </div>
-
-                  <div className="mb-md">
-                    <label htmlFor="email" style={{ display: "block", marginBottom: "0.5rem", fontWeight: "500" }}>
-                      Email Address *
-                    </label>
+                  <div className="form-group">
+                    <label htmlFor="email">Email Address *</label>
                     <input
                       type="email"
                       id="email"
@@ -167,221 +271,690 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      style={{
-                        width: "100%",
-                        padding: "0.75rem",
-                        border: "2px solid var(--border)",
-                        borderRadius: "var(--radius-md)",
-                        fontSize: "1rem",
-                        transition: "border-color 0.3s ease",
-                      }}
-                      onFocus={(e) => (e.target.style.borderColor = "var(--primary-blue)")}
-                      onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
+                      placeholder="your.email@example.com"
                     />
                   </div>
+                </div>
 
-                  <div className="mb-md">
-                    <label htmlFor="phone" style={{ display: "block", marginBottom: "0.5rem", fontWeight: "500" }}>
-                      Phone Number
-                    </label>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="phone">Phone Number</label>
                     <input
                       type="tel"
                       id="phone"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      style={{
-                        width: "100%",
-                        padding: "0.75rem",
-                        border: "2px solid var(--border)",
-                        borderRadius: "var(--radius-md)",
-                        fontSize: "1rem",
-                        transition: "border-color 0.3s ease",
-                      }}
-                      onFocus={(e) => (e.target.style.borderColor = "var(--primary-blue)")}
-                      onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
+                      placeholder="+254 700 000 000"
                     />
                   </div>
+                  {activeTab !== 'general' && (
+                    <div className="form-group">
+                      <label htmlFor="studentGrade">
+                        {activeTab === 'admissions' ? 'Grade Interested In' : 'Current Grade'}
+                      </label>
+                      <select
+                        id="studentGrade"
+                        name="studentGrade"
+                        value={formData.studentGrade}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select grade</option>
+                        <option value="pp1">PP1 (Age 4)</option>
+                        <option value="pp2">PP2 (Age 5)</option>
+                        <option value="grade1">Grade 1 (Age 6)</option>
+                        <option value="grade2">Grade 2 (Age 7)</option>
+                        <option value="grade3">Grade 3 (Age 8)</option>
+                        <option value="grade4">Grade 4 (Age 9)</option>
+                        <option value="grade5">Grade 5 (Age 10)</option>
+                        <option value="grade6">Grade 6 (Age 11)</option>
+                      </select>
+                    </div>
+                  )}
+                </div>
 
-                  <div className="mb-md">
-                    <label htmlFor="subject" style={{ display: "block", marginBottom: "0.5rem", fontWeight: "500" }}>
-                      Subject *
-                    </label>
+                {activeTab === 'general' && (
+                  <div className="form-group">
+                    <label htmlFor="inquiryType">Inquiry Type</label>
                     <select
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
+                      id="inquiryType"
+                      name="inquiryType"
+                      value={formData.inquiryType}
                       onChange={handleChange}
-                      required
-                      style={{
-                        width: "100%",
-                        padding: "0.75rem",
-                        border: "2px solid var(--border)",
-                        borderRadius: "var(--radius-md)",
-                        fontSize: "1rem",
-                        transition: "border-color 0.3s ease",
-                        backgroundColor: "var(--pure-white)",
-                      }}
-                      onFocus={(e) => (e.target.style.borderColor = "var(--primary-blue)")}
-                      onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
                     >
-                      <option value="">Select a subject</option>
-                      <option value="admissions">Admissions Inquiry</option>
-                      <option value="general">General Information</option>
+                      <option value="">Select inquiry type</option>
                       <option value="academics">Academic Programs</option>
-                      <option value="visit">Schedule a Visit</option>
+                      <option value="fees">Fee Structure</option>
+                      <option value="facilities">School Facilities</option>
+                      <option value="transport">Transport Services</option>
                       <option value="other">Other</option>
                     </select>
                   </div>
+                )}
 
-                  <div className="mb-md">
-                    <label htmlFor="message" style={{ display: "block", marginBottom: "0.5rem", fontWeight: "500" }}>
-                      Message *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows="5"
-                      style={{
-                        width: "100%",
-                        padding: "0.75rem",
-                        border: "2px solid var(--border)",
-                        borderRadius: "var(--radius-md)",
-                        fontSize: "1rem",
-                        transition: "border-color 0.3s ease",
-                        resize: "vertical",
-                      }}
-                      onFocus={(e) => (e.target.style.borderColor = "var(--primary-blue)")}
-                      onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
-                      placeholder="Please share your questions or comments..."
-                    ></textarea>
-                  </div>
+                <div className="form-group">
+                  <label htmlFor="message">
+                    {activeTab === 'general' && 'Your Message *'}
+                    {activeTab === 'admissions' && 'Tell us about your child *'}
+                    {activeTab === 'visit' && 'Any specific areas you\'d like to see? *'}
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows="6"
+                    placeholder={
+                      activeTab === 'general' ? "How can we help you today?" :
+                      activeTab === 'admissions' ? "Share your child's interests and any special needs..." :
+                      "Let us know your preferred date and time for the visit..."
+                    }
+                  ></textarea>
+                </div>
 
-                  <button type="submit" className="btn btn-primary" style={{ width: "100%" }}>
-                    <FaPaperPlane style={{ marginRight: "0.5rem" }} />
-                    Send Message
-                  </button>
-                </form>
-              </div>
+                <button type="submit" className="submit-button">
+                  <FaPaperPlane />
+                  {activeTab === 'general' && 'Send Message'}
+                  {activeTab === 'admissions' && 'Start Application'}
+                  {activeTab === 'visit' && 'Schedule Visit'}
+                </button>
+              </form>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Map and Social Media Section */}
-      <section className="section" style={{ backgroundColor: "var(--light-gray)" }}>
-        <div className="container">
-          <div className="grid grid-2">
-            <div>
-              <h3 style={{ color: "var(--primary-blue)" }}>Find Us</h3>
-              <p className="mb-md">
-                New Highlight School is conveniently located in the heart of Learning City, easily accessible by public
-                transport and private vehicles. We have ample parking space for visitors.
-              </p>
-              <div
-                style={{
-                  width: "100%",
-                  height: "300px",
-                  backgroundColor: "var(--medium-gray)",
-                  borderRadius: "var(--radius-lg)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "var(--pure-white)",
-                  fontSize: "1.125rem",
-                }}
-              >
-                Interactive Map Coming Soon
-              </div>
-            </div>
-
-            <div>
-              <h3 style={{ color: "var(--accent-red)" }}>Connect With Us</h3>
-              <p className="mb-md">
-                Follow us on social media to stay updated with school news, events, and student achievements.
-              </p>
-
-              <div className="flex gap-md mb-lg">
-                <a
-                  href="#"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: "50px",
-                    height: "50px",
-                    backgroundColor: "var(--primary-blue)",
-                    color: "var(--pure-white)",
-                    borderRadius: "50%",
-                    textDecoration: "none",
-                    transition: "transform 0.3s ease",
-                  }}
-                  onMouseOver={(e) => (e.target.style.transform = "scale(1.1)")}
-                  onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
-                >
-                  <FaFacebook size={24} />
-                </a>
-                <a
-                  href="#"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: "50px",
-                    height: "50px",
-                    backgroundColor: "var(--accent-red)",
-                    color: "var(--pure-white)",
-                    borderRadius: "50%",
-                    textDecoration: "none",
-                    transition: "transform 0.3s ease",
-                  }}
-                  onMouseOver={(e) => (e.target.style.transform = "scale(1.1)")}
-                  onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
-                >
-                  <FaTwitter size={24} />
-                </a>
-                <a
-                  href="#"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: "50px",
-                    height: "50px",
-                    backgroundColor: "var(--primary-blue)",
-                    color: "var(--pure-white)",
-                    borderRadius: "50%",
-                    textDecoration: "none",
-                    transition: "transform 0.3s ease",
-                  }}
-                  onMouseOver={(e) => (e.target.style.transform = "scale(1.1)")}
-                  onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
-                >
-                  <FaInstagram size={24} />
-                </a>
-              </div>
-
-              <div className="card">
-                <h4 style={{ color: "var(--primary-blue)" }}>Quick Contact</h4>
-                <p className="mb-sm">For urgent matters or immediate assistance:</p>
-                <div className="flex items-center gap-sm mb-sm">
-                  <FaPhone size={16} color="var(--accent-red)" />
-                  <strong>Emergency: +254 700 123 458</strong>
-                </div>
-                <div className="flex items-center gap-sm">
-                  <FaEnvelope size={16} color="var(--primary-blue)" />
-                  <strong>urgent@newhighlightschool.ac.ke</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Map Section */}
+      <section className="section" style={{ backgroundColor: 'var(--light-gray)', padding: '80px 0' }}>
+  <div className="container">
+    <div className="map-section">
+      <div className="map-header" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <h2 style={{ color: 'var(--primary-blue)', fontSize: '2.5rem', marginBottom: '1rem' }}>
+          Find Your Way to Excellence
+        </h2>
+        <p style={{ color: 'var(--dark-navy)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto' }}>
+          Our campus is designed to inspire learning and creativity. Come see for yourself!
+        </p>
+      </div>
+      
+      <div className="map-container" style={{ 
+        borderRadius: '1rem', 
+        overflow: 'hidden', 
+        boxShadow: 'var(--shadow-xl)',
+        maxWidth: '1000px',
+        margin: '0 auto'
+      }}>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8199220532565!2d36.69475167448297!3d-1.28180523562022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1bffdea7af55%3A0x7fb474375a32c1a5!2sNew%20Highlight%20School!5e0!3m2!1sen!2ske!4v1758885337027!5m2!1sen!2ske"
+          width="100%"
+          height="450"
+          style={{ border: 0 }}
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="New Highlight School Location"
+        ></iframe>
+      </div>
+      
+      
+    </div>
+  </div>
+</section>
 
       <Footer />
+
+      <style jsx>{`
+        /* Contact Hero */
+        .contact-hero {
+          background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-navy) 100%);
+          padding: 100px 0 60px;
+          position: relative;
+          overflow: hidden;
+          min-height: 300px;
+          display: flex;
+          align-items: center;
+        }
+
+        .hero-content {
+          text-align: center;
+          position: relative;
+          z-index: 2;
+        }
+
+        .hero-badge {
+          display: inline-block;
+          background: rgba(255,255,255,0.1);
+          backdrop-filter: blur(10px);
+          padding: 0.75rem 1.5rem;
+          border-radius: 50px;
+          margin-bottom: 1.5rem;
+          border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero-badge span {
+          color: white;
+          font-size: 0.8rem;
+          font-weight: 600;
+          letter-spacing: 1px;
+        }
+
+        .contact-hero h1 {
+          color: white;
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .contact-hero p {
+          color: rgba(255,255,255,0.9);
+          font-size: 1.1rem;
+          max-width: 500px;
+          margin: 0 auto;
+          line-height: 1.5;
+        }
+
+        /* Tabs Section */
+        .tabs-section {
+          padding: 40px 0 20px;
+        }
+
+        .contact-tabs {
+          display: flex;
+          justify-content: center;
+          gap: 0.5rem;
+          margin-bottom: 2rem;
+          flex-wrap: wrap;
+        }
+
+        .tab-button {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.75rem 1.5rem;
+          border: 2px solid var(--light-gray);
+          background: white;
+          border-radius: 25px;
+          font-weight: 600;
+          color: var(--dark-navy);
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-size: 0.9rem;
+          min-width: 120px;
+          justify-content: center;
+        }
+
+        .tab-button.active {
+          background: var(--primary-blue);
+          color: white;
+          border-color: var(--primary-blue);
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-md);
+        }
+
+        .tab-button:hover {
+          transform: translateY(-2px);
+          border-color: var(--primary-blue);
+        }
+
+        /* Contact Content */
+        .contact-content {
+          padding: 20px 0 60px;
+        }
+
+        .contact-grid {
+          display: grid;
+          grid-template-columns: 1fr 1.2fr;
+          gap: 2rem;
+          align-items: start;
+        }
+
+        /* Contact Info */
+        .contact-info {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .info-card {
+          background: white;
+          padding: 1.5rem;
+          border-radius: 12px;
+          box-shadow: var(--shadow-sm);
+          transition: all 0.3s ease;
+          border: 1px solid var(--light-gray);
+        }
+
+        .info-card:hover {
+          transform: translateY(-3px);
+          box-shadow: var(--shadow-md);
+        }
+
+        .info-header {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          margin-bottom: 1rem;
+        }
+
+        .info-icon {
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 1.1rem;
+        }
+
+        .campus-icon { background: linear-gradient(135deg, var(--primary-blue), #3b82f6); }
+        .hours-icon { background: linear-gradient(135deg, var(--accent-red), #ef4444); }
+        .connect-icon { background: linear-gradient(135deg, var(--primary-blue), #3b82f6); }
+
+        .info-card h3 {
+          color: var(--primary-blue);
+          font-size: 1.2rem;
+          margin: 0;
+        }
+
+        .info-content p {
+          color: var(--dark-navy);
+          font-weight: 500;
+          line-height: 1.6;
+          margin: 0 0 1rem 0;
+        }
+
+        .info-feature {
+          display: flex;
+          gap: 0.5rem;
+          flex-wrap: wrap;
+        }
+
+        .info-feature span {
+          background: var(--light-gray);
+          padding: 0.3rem 0.7rem;
+          border-radius: 15px;
+          font-size: 0.8rem;
+          font-weight: 500;
+        }
+
+        .time-slot {
+          display: flex;
+          justify-content: space-between;
+          padding: 0.4rem 0;
+          border-bottom: 1px solid var(--light-gray);
+          font-size: 0.9rem;
+        }
+
+        .time-slot:last-child {
+          border-bottom: none;
+        }
+
+        .time-slot .closed {
+          color: var(--accent-red);
+          font-weight: 600;
+        }
+
+        .contact-method {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.6rem 0;
+          border-bottom: 1px solid var(--light-gray);
+        }
+
+        .contact-method:last-child {
+          border-bottom: none;
+        }
+
+        .method-icon {
+          font-size: 1.1rem;
+          color: var(--primary-blue);
+          flex-shrink: 0;
+        }
+
+        .method-icon.whatsapp {
+          color: var(--accent-red);
+        }
+
+        .contact-method div {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .method-label {
+          font-weight: 600;
+          font-size: 0.9rem;
+          color: var(--dark-navy);
+        }
+
+        .method-value {
+          font-size: 0.9rem;
+          color: var(--dark-navy);
+        }
+
+        /* Social Card */
+        .social-card {
+          background: white;
+          padding: 1.5rem;
+          border-radius: 12px;
+          box-shadow: var(--shadow-sm);
+          border: 1px solid var(--light-gray);
+        }
+
+        .social-card h4 {
+          color: var(--dark-navy);
+          margin-bottom: 1rem;
+          font-size: 1.1rem;
+        }
+
+        .social-links {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+
+        .social-link {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.75rem;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        }
+
+        .social-link.facebook {
+          background: #1877F2;
+          color: white;
+        }
+
+        .social-link.twitter {
+          background: #1DA1F2;
+          color: white;
+        }
+
+        .social-link.instagram {
+          background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+          color: white;
+        }
+
+        .social-link:hover {
+          transform: translateX(5px);
+        }
+
+        /* Contact Form */
+        .contact-form-container {
+          background: white;
+          padding: 2rem;
+          border-radius: 12px;
+          box-shadow: var(--shadow-md);
+          border: 1px solid var(--light-gray);
+        }
+
+        .form-header {
+          text-align: center;
+          margin-bottom: 2rem;
+        }
+
+        .form-header h2 {
+          color: var(--primary-blue);
+          font-size: 1.5rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+          color: var(--dark-navy);
+          font-size: 1rem;
+        }
+
+        .contact-form {
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
+        }
+
+        .form-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+        }
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .form-group label {
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+          color: var(--dark-navy);
+          font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+          padding: 0.75rem;
+          border: 2px solid var(--light-gray);
+          border-radius: 8px;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+          font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+          outline: none;
+          border-color: var(--primary-blue);
+          box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+
+        .submit-button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          padding: 1rem 2rem;
+          background: linear-gradient(135deg, var(--primary-blue), #3b82f6);
+          color: white;
+          border: none;
+          border-radius: 8px;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          margin-top: 0.5rem;
+        }
+
+        .submit-button:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-lg);
+        }
+
+        /* Map Section */
+        .map-section {
+          background: var(--light-gray);
+          padding: 60px 0;
+        }
+
+        .map-content {
+          text-align: center;
+        }
+
+        .map-header {
+          margin-bottom: 2rem;
+        }
+
+        .map-header h2 {
+          color: var(--primary-blue);
+          font-size: 2rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .map-header p {
+          color: var(--dark-navy);
+          font-size: 1.1rem;
+          max-width: 500px;
+          margin: 0 auto;
+        }
+
+        .map-container {
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: var(--shadow-md);
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+          .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+          }
+
+          .contact-hero h1 {
+            font-size: 2rem;
+          }
+
+          .contact-hero p {
+            font-size: 1rem;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .contact-hero {
+            padding: 80px 0 40px;
+            min-height: 250px;
+          }
+
+          .contact-hero h1 {
+            font-size: 1.8rem;
+          }
+
+          .contact-tabs {
+            flex-direction: row;
+            overflow-x: auto;
+            justify-content: flex-start;
+            padding: 0.5rem 0;
+            -webkit-overflow-scrolling: touch;
+          }
+
+          .tab-button {
+            min-width: 110px;
+            font-size: 0.85rem;
+            padding: 0.6rem 1.2rem;
+            white-space: nowrap;
+          }
+
+          .form-row {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+
+          .contact-form-container {
+            padding: 1.5rem;
+          }
+
+          .info-card {
+            padding: 1.25rem;
+          }
+
+          .map-header h2 {
+            font-size: 1.5rem;
+          }
+
+          .map-header p {
+            font-size: 1rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .contact-hero {
+            padding: 60px 0 30px;
+          }
+
+          .contact-hero h1 {
+            font-size: 1.5rem;
+          }
+
+          .hero-badge {
+            padding: 0.5rem 1rem;
+          }
+
+          .hero-badge span {
+            font-size: 0.75rem;
+          }
+
+          .tab-button {
+            min-width: 100px;
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+          }
+
+          .contact-content {
+            padding: 20px 0 40px;
+          }
+
+          .contact-form-container {
+            padding: 1.25rem;
+          }
+
+          .info-card {
+            padding: 1rem;
+          }
+
+          .social-card {
+            padding: 1rem;
+          }
+
+          .social-link {
+            padding: 0.6rem;
+            font-size: 0.85rem;
+          }
+
+          .map-section {
+            padding: 40px 0;
+          }
+
+          .map-header h2 {
+            font-size: 1.3rem;
+          }
+
+          .map-container iframe {
+            height: 250px;
+          }
+        }
+
+        @media (max-width: 360px) {
+          .contact-tabs {
+                gap: 0.25rem;
+            }
+            
+            .tab-button {
+                min-width: 90px;
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
+            }
+            
+            .info-feature {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .time-slot {
+                flex-direction: column;
+                gap: 0.25rem;
+                text-align: center;
+            }
+        }
+        
+      `}</style>
     </>
   )
 }
