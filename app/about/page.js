@@ -1,205 +1,322 @@
+"use client"
 import Navigation from "../../components/Navigation"
 import Footer from "../../components/Footer"
-import { FaEye, FaBullseye, FaHeart, FaUsers, FaAward, FaHandshake } from "react-icons/fa"
+import { 
+  FaBullseye, 
+  FaEye, 
+  FaHeart, 
+  FaUsers, 
+  FaAward, 
+  FaHandshake, 
+  FaGraduationCap,
+  FaSeedling,
+  FaRocket,
+  FaChartLine,
+  FaHandHoldingHeart,
+  FaLightbulb
+} from "react-icons/fa"
 
 export default function AboutPage() {
   return (
     <>
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="hero" style={{ padding: "100px 0 60px" }}>
+      {/* Compact Hero Section */}
+      <section className="about-hero" style={{ 
+        background: 'linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-navy) 100%)',
+        padding: '120px 0 80px',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div className="floating-shapes">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
         <div className="container">
-          <div className="hero-content">
-            <h1 className="text-balance">About New Highlight School</h1>
-            <p className="text-balance">
-              Discover our mission, vision, and commitment to providing exceptional CBC education that shapes future
-              leaders
+          <div className="about-hero-content" style={{ textAlign: 'center', position: 'relative', zIndex: 2 }}>
+            <div style={{ 
+              display: 'inline-block',
+              background: 'rgba(255,255,255,0.1)',
+              backdropFilter: 'blur(10px)',
+              padding: '1rem 2rem',
+              borderRadius: '50px',
+              marginBottom: '2rem',
+              border: '1px solid rgba(255,255,255,0.2)'
+            }}>
+              <span style={{ color: 'white', fontSize: '0.9rem', fontWeight: '600', letterSpacing: '1px' }}>
+                OUR STORY
+              </span>
+            </div>
+            <h1 style={{ 
+              color: 'white', 
+              fontSize: '3rem', 
+              marginBottom: '1rem',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
+            }}>
+              Shaping Futures,<br />Building Character
+            </h1>
+            <p style={{ 
+              color: 'rgba(255,255,255,0.9)', 
+              fontSize: '1.2rem',
+              maxWidth: '600px',
+              margin: '0 auto',
+              lineHeight: '1.6'
+            }}>
+              Where every child's potential meets opportunity through innovative CBC education
             </p>
           </div>
         </div>
       </section>
 
-      {/* Mission, Vision, Values Section */}
-      <section className="section">
+      {/* Mission Vision Values - Creative Layout */}
+      <section className="section" style={{ padding: '80px 0' }}>
         <div className="container">
-          <div className="grid grid-3">
-            <div className="card text-center">
-              <div className="flex justify-center mb-md">
-                <FaBullseye size={48} color="var(--primary-blue)" />
+          <div className="mvp-grid">
+            <div className="mvp-card mission-card">
+              <div className="mvp-icon" style={{ background: 'linear-gradient(135deg, var(--primary-blue), #3b82f6)' }}>
+                <FaBullseye />
               </div>
-              <h3>Our Mission</h3>
-              <p>
-                To provide quality, holistic education through the Competency-Based Curriculum, nurturing confident,
-                creative, and responsible citizens who contribute positively to society.
-              </p>
-            </div>
-
-            <div className="card text-center">
-              <div className="flex justify-center mb-md">
-                <FaEye size={48} color="var(--accent-red)" />
-              </div>
-              <h3>Our Vision</h3>
-              <p>
-                To be a leading primary school that empowers learners with 21st-century skills, values, and competencies
-                for lifelong learning and global citizenship.
-              </p>
-            </div>
-
-            <div className="card text-center">
-              <div className="flex justify-center mb-md">
-                <FaHeart size={48} color="var(--primary-blue)" />
-              </div>
-              <h3>Our Values</h3>
-              <p>
-                Excellence, Integrity, Respect, Innovation, Collaboration, and Compassion guide everything we do in our
-                educational community.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Content Section */}
-      <section className="section" style={{ backgroundColor: "var(--light-gray)" }}>
-        <div className="container">
-          <div className="grid grid-2">
-            <div>
-              <h2 style={{ color: "var(--primary-blue)" }}>Our Story</h2>
-              <p className="mb-md">
-                New Highlight School was established with a clear vision: to provide exceptional primary education that
-                prepares students for the challenges and opportunities of the modern world. Since our founding, we have
-                been at the forefront of implementing the Competency-Based Curriculum in Kenya.
-              </p>
-              <p className="mb-md">
-                Our school community is built on the foundation of academic excellence, character development, and
-                holistic growth. We believe that every child has unique potential, and our role is to nurture and
-                develop that potential through innovative teaching methods and a supportive learning environment.
-              </p>
-              <p>
-                With state-of-the-art facilities, qualified teachers, and a comprehensive CBC curriculum, we ensure that
-                our students receive the best possible education to prepare them for secondary school and beyond.
-              </p>
-            </div>
-
-            <div>
-              <h2 style={{ color: "var(--accent-red)" }}>Why Choose Us?</h2>
-              <div className="flex flex-col gap-md">
-                <div className="flex items-center gap-md">
-                  <FaUsers size={24} color="var(--primary-blue)" />
-                  <span>Small class sizes for personalized attention</span>
-                </div>
-                <div className="flex items-center gap-md">
-                  <FaAward size={24} color="var(--accent-red)" />
-                  <span>Experienced and CBC-trained teachers</span>
-                </div>
-                <div className="flex items-center gap-md">
-                  <FaHandshake size={24} color="var(--primary-blue)" />
-                  <span>Strong parent-school partnership</span>
-                </div>
-                <div className="flex items-center gap-md">
-                  <FaHeart size={24} color="var(--accent-red)" />
-                  <span>Safe and nurturing learning environment</span>
-                </div>
-              </div>
-
-              <div className="mt-lg">
-                <h3 style={{ color: "var(--primary-blue)" }}>Our Commitment</h3>
-                <p>
-                  We are committed to providing an education that goes beyond academic achievement. Our focus on
-                  character development, critical thinking, and practical skills ensures that our graduates are
-                  well-prepared for the next phase of their educational journey.
+              <div className="mvp-content">
+                <h3 style={{ color: 'var(--primary-blue)' }}>Our Mission</h3>
+                <p style={{ color: 'var(--dark-navy)', lineHeight: '1.8' }}>
+                  To ignite curiosity and build competence through a CBC framework that nurtures confident, 
+                  creative problem-solvers ready for tomorrow's challenges.
                 </p>
+                <div className="mission-highlights">
+                  <span>✓ Holistic Development</span>
+                  <span>✓ Future-Ready Skills</span>
+                  <span>✓ Community Impact</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="mvp-card vision-card">
+              <div className="mvp-icon" style={{ background: 'linear-gradient(135deg, var(--accent-red), #ef4444)' }}>
+                <FaEye />
+              </div>
+              <div className="mvp-content">
+                <h3 style={{ color: 'var(--accent-red)' }}>Our Vision</h3>
+                <p style={{ color: 'var(--dark-navy)', lineHeight: '1.8' }}>
+                  To be Nairobi's beacon of educational innovation where every child discovers their unique 
+                  brilliance and develops the courage to shine.
+                </p>
+                <div className="vision-pillars">
+                  <div className="pillar">
+                    <FaRocket style={{ color: 'var(--accent-red)' }} />
+                    <span>Innovation</span>
+                  </div>
+                  <div className="pillar">
+                    <FaGraduationCap style={{ color: 'var(--accent-red)' }} />
+                    <span>Excellence</span>
+                  </div>
+                  <div className="pillar">
+                    <FaHandHoldingHeart style={{ color: 'var(--accent-red)' }} />
+                    <span>Care</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="values-showcase">
+              <div className="values-header">
+                <FaHeart style={{ color: 'var(--primary-blue)', fontSize: '2rem' }} />
+                <h3 style={{ color: 'var(--primary-blue)' }}>Our Values</h3>
+              </div>
+              <div className="values-grid">
+                <div className="value-item">
+                  <FaLightbulb style={{ color: 'var(--accent-red)' }} />
+                  <span>Innovation</span>
+                </div>
+                <div className="value-item">
+                  <FaChartLine style={{ color: 'var(--primary-blue)' }} />
+                  <span>Excellence</span>
+                </div>
+                <div className="value-item">
+                  <FaHandshake style={{ color: 'var(--accent-red)' }} />
+                  <span>Integrity</span>
+                </div>
+                <div className="value-item">
+                  <FaUsers style={{ color: 'var(--primary-blue)' }} />
+                  <span>Collaboration</span>
+                </div>
+                <div className="value-item">
+                  <FaSeedling style={{ color: 'var(--accent-red)' }} />
+                  <span>Growth</span>
+                </div>
+                <div className="value-item">
+                  <FaHeart style={{ color: 'var(--primary-blue)' }} />
+                  <span>Compassion</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Leadership Section */}
-      <section className="section">
+      {/* Story Timeline */}
+      <section className="section" style={{ backgroundColor: 'var(--light-gray)', padding: '80px 0' }}>
         <div className="container">
-          <h2 className="section-title">Our Leadership Team</h2>
-          <p className="section-subtitle">
-            Meet the dedicated professionals who guide our school's vision and ensure educational excellence
-          </p>
+          <div className="story-header" style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 style={{ color: 'var(--primary-blue)', fontSize: '2.5rem', marginBottom: '1rem' }}>
+              Our Journey
+            </h2>
+            <p style={{ color: 'var(--dark-navy)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto' }}>
+              From humble beginnings to becoming a leader in CBC education
+            </p>
+          </div>
 
-          <div className="grid grid-3">
-            <div className="card text-center">
-              <div className="flex justify-center mb-md">
-                <div
-                  style={{
-                    width: "80px",
-                    height: "80px",
-                    borderRadius: "50%",
-                    backgroundColor: "var(--primary-blue)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "var(--pure-white)",
-                    fontSize: "2rem",
-                    fontWeight: "bold",
-                  }}
-                >
-                  MK
+          <div className="timeline">
+            <div className="timeline-item">
+              <div className="timeline-year">2018</div>
+              <div className="timeline-content">
+                <h4 style={{ color: 'var(--primary-blue)' }}>The Beginning</h4>
+                <p>New Highlight School opens its doors with 3 classrooms and a vision for transformative education</p>
+              </div>
+            </div>
+            <div className="timeline-item">
+              <div className="timeline-year">2019</div>
+              <div className="timeline-content">
+                <h4 style={{ color: 'var(--accent-red)' }}>CBC Pioneer</h4>
+                <p>Among the first schools in Nairobi to fully implement the Competency-Based Curriculum</p>
+              </div>
+            </div>
+            <div className="timeline-item">
+              <div className="timeline-year">2021</div>
+              <div className="timeline-content">
+                <h4 style={{ color: 'var(--primary-blue)' }}>Expansion</h4>
+                <p>Expanded to include modern science lab, computer center, and creative arts studio</p>
+              </div>
+            </div>
+            <div className="timeline-item">
+              <div className="timeline-year">2024</div>
+              <div className="timeline-content">
+                <h4 style={{ color: 'var(--accent-red)' }}>Excellence</h4>
+                <p>Recognized as a Center of Excellence in CBC implementation with 100% transition rate</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us - Interactive */}
+      <section className="section" style={{ padding: '80px 0' }}>
+        <div className="container">
+          <div className="choice-grid">
+            <div className="choice-content">
+              <h2 style={{ color: 'var(--primary-blue)', fontSize: '2.5rem', marginBottom: '2rem' }}>
+                Why Families<br />Choose New Highlight
+              </h2>
+              <p style={{ color: 'var(--dark-navy)', fontSize: '1.2rem', lineHeight: '1.8', marginBottom: '3rem' }}>
+                We believe education should be as unique as every child. Our approach combines the best of 
+                traditional values with innovative teaching methods.
+              </p>
+              
+              <div className="choice-stats">
+                <div className="stat">
+                  <div style={{ color: 'var(--primary-blue)', fontSize: '2.5rem', fontWeight: 'bold' }}>15:1</div>
+                  <div style={{ color: 'var(--dark-navy)' }}>Student-Teacher Ratio</div>
+                </div>
+                <div className="stat">
+                  <div style={{ color: 'var(--accent-red)', fontSize: '2.5rem', fontWeight: 'bold' }}>100%</div>
+                  <div style={{ color: 'var(--dark-navy)' }}>CBC Certified Staff</div>
+                </div>
+                <div className="stat">
+                  <div style={{ color: 'var(--primary-blue)', fontSize: '2.5rem', fontWeight: 'bold' }}>6+</div>
+                  <div style={{ color: 'var(--dark-navy)' }}>Years of Excellence</div>
                 </div>
               </div>
-              <h4>Mrs. Mary Kamau</h4>
-              <p style={{ color: "var(--accent-red)", fontWeight: "500" }}>Head Teacher</p>
-              <p>
-                M.Ed in Educational Leadership, 15+ years experience in CBC implementation and primary education
-                management.
-              </p>
             </div>
 
-            <div className="card text-center">
-              <div className="flex justify-center mb-md">
-                <div
-                  style={{
-                    width: "80px",
-                    height: "80px",
-                    borderRadius: "50%",
-                    backgroundColor: "var(--accent-red)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "var(--pure-white)",
-                    fontSize: "2rem",
-                    fontWeight: "bold",
-                  }}
-                >
-                  JO
+            <div className="choice-features">
+              <div className="feature-cards">
+                <div className="feature-card">
+                  <FaUsers style={{ color: 'var(--primary-blue)', fontSize: '2rem' }} />
+                  <div>
+                    <h4 style={{ color: 'var(--primary-blue)' }}>Personalized Learning</h4>
+                    <p>Small classes ensure every child gets the attention they deserve</p>
+                  </div>
+                </div>
+                <div className="feature-card">
+                  <FaAward style={{ color: 'var(--accent-red)', fontSize: '2rem' }} />
+                  <div>
+                    <h4 style={{ color: 'var(--accent-red)' }}>Expert Educators</h4>
+                    <p>Our teachers are passionate about CBC and child development</p>
+                  </div>
+                </div>
+                <div className="feature-card">
+                  <FaHandshake style={{ color: 'var(--primary-blue)', fontSize: '2rem' }} />
+                  <div>
+                    <h4 style={{ color: 'var(--primary-blue)' }}>Family Partnership</h4>
+                    <p>We work closely with parents to support each child's journey</p>
+                  </div>
+                </div>
+                <div className="feature-card">
+                  <FaHeart style={{ color: 'var(--accent-red)', fontSize: '2rem' }} />
+                  <div>
+                    <h4 style={{ color: 'var(--accent-red)' }}>Nurturing Environment</h4>
+                    <p>Safe, inclusive spaces where children feel valued and supported</p>
+                  </div>
                 </div>
               </div>
-              <h4>Mr. John Ochieng</h4>
-              <p style={{ color: "var(--primary-blue)", fontWeight: "500" }}>Deputy Head Teacher</p>
-              <p>
-                B.Ed in Mathematics & Science, CBC curriculum specialist with expertise in competency-based assessment.
-              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Team - Modern Cards */}
+      <section className="section" style={{ backgroundColor: 'var(--light-gray)', padding: '80px 0' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 style={{ color: 'var(--primary-blue)', fontSize: '2.5rem', marginBottom: '1rem' }}>
+              Meet Our Leaders
+            </h2>
+            <p style={{ color: 'var(--dark-navy)', fontSize: '1.2rem' }}>
+              Passionate educators dedicated to your child's success
+            </p>
+          </div>
+
+          <div className="leadership-grid">
+            <div className="leader-card">
+              <div className="leader-avatar" style={{ background: 'linear-gradient(135deg, var(--primary-blue), #3b82f6)' }}>
+                MK
+              </div>
+              <div className="leader-info">
+                <h4 style={{ color: 'var(--primary-blue)' }}>Mrs. Mary Kamau</h4>
+                <p style={{ color: 'var(--accent-red)', fontWeight: '600' }}>Head Teacher</p>
+                <p style={{ color: 'var(--dark-navy)', fontSize: '0.9rem' }}>
+                  15+ years shaping young minds. Passionate about innovative education and child development.
+                </p>
+                <div className="leader-badge">M.Ed Educational Leadership</div>
+              </div>
             </div>
 
-            <div className="card text-center">
-              <div className="flex justify-center mb-md">
-                <div
-                  style={{
-                    width: "80px",
-                    height: "80px",
-                    borderRadius: "50%",
-                    backgroundColor: "var(--primary-blue)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "var(--pure-white)",
-                    fontSize: "2rem",
-                    fontWeight: "bold",
-                  }}
-                >
-                  SM
-                </div>
+            <div className="leader-card">
+              <div className="leader-avatar" style={{ background: 'linear-gradient(135deg, var(--accent-red), #ef4444)' }}>
+                JO
               </div>
-              <h4>Ms. Sarah Mwangi</h4>
-              <p style={{ color: "var(--accent-red)", fontWeight: "500" }}>Academic Coordinator</p>
-              <p>B.Ed in Languages, specializing in multilingual education and CBC learning area coordination.</p>
+              <div className="leader-info">
+                <h4 style={{ color: 'var(--accent-red)' }}>Mr. John Ochieng</h4>
+                <p style={{ color: 'var(--primary-blue)', fontWeight: '600' }}>Deputy Head Teacher</p>
+                <p style={{ color: 'var(--dark-navy)', fontSize: '0.9rem' }}>
+                  CBC specialist with a talent for making complex concepts accessible to young learners.
+                </p>
+                <div className="leader-badge">B.Ed Mathematics & Science</div>
+              </div>
+            </div>
+
+            <div className="leader-card">
+              <div className="leader-avatar" style={{ background: 'linear-gradient(135deg, var(--primary-blue), #3b82f6)' }}>
+                SM
+              </div>
+              <div className="leader-info">
+                <h4 style={{ color: 'var(--primary-blue)' }}>Ms. Sarah Mwangi</h4>
+                <p style={{ color: 'var(--accent-red)', fontWeight: '600' }}>Academic Coordinator</p>
+                <p style={{ color: 'var(--dark-navy)', fontSize: '0.9rem' }}>
+                  Language expert who believes every child has a unique voice waiting to be heard.
+                </p>
+                <div className="leader-badge">B.Ed Languages</div>
+              </div>
             </div>
           </div>
         </div>
