@@ -36,19 +36,36 @@ export default function ContactPage() {
     })
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-    alert("Thank you for your message! We'll contact you within 24 hours.")
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      studentGrade: "",
-      inquiryType: "",
-      message: "",
-    })
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("https://highlight-server.onrender.com/send", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      alert("✅ Thank you! Your message has been sent.");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        studentGrade: "",
+        inquiryType: "",
+        message: "",
+      });
+    } else {
+      alert("❌ Failed to send: " + result.error);
+    }
+  } catch (error) {
+    alert("⚠️ Network error. Try again later.");
+    console.error(error);
   }
+};
 
   return (
     <>
