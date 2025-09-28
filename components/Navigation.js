@@ -15,6 +15,18 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMobileMenuOpen && !event.target.closest('.nav-container')) {
+        setIsMobileMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside)
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [isMobileMenuOpen])
+
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About Us" },
@@ -24,31 +36,58 @@ export default function Navigation() {
   ]
 
   return (
-    <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
-      <div className="nav-container">
-        <Link href="/" className="logo">
-          New Highlight School
-        </Link>
+    <>
+      <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
+        <div className="nav-container">
+          <Link href="/" className="logo">
+            New Highlight School
+          </Link>
 
-        <ul className="nav-links">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link href={link.href} className="nav-link">
+          {/* Desktop Navigation */}
+          <ul className="nav-links">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="nav-link">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Mobile Menu Button */}
+          <div
+            className={`mobile-menu-btn ${isMobileMenuOpen ? "active" : ""}`}
+            onClick={(e) => {
+              e.stopPropagation()
+              setIsMobileMenuOpen(!isMobileMenuOpen)
+            }}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        {/* Mobile Menu Overlay */}
+        <div className={`mobile-menu-overlay ${isMobileMenuOpen ? "active" : ""}`}>
+          <div className="mobile-menu-content">
+            {navLinks.map((link) => (
+              <Link 
+                key={link.href}
+                href={link.href} 
+                className="mobile-nav-link"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
                 {link.label}
               </Link>
-            </li>
-          ))}
-        </ul>
-
-        <div
-          className={`mobile-menu-btn ${isMobileMenuOpen ? "active" : ""}`}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
+            ))}
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      <style jsx>{`
+        
+      `}</style>
+    </>
   )
 }
