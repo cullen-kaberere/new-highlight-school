@@ -28,6 +28,7 @@ export default function ContactPage() {
   })
 
   const [activeTab, setActiveTab] = useState("general")
+  const [loading, setLoading] = useState(false) // ✅ New loading state
 
   const handleChange = (e) => {
     setFormData({
@@ -37,35 +38,38 @@ export default function ContactPage() {
   }
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault()
+    setLoading(true) // ✅ Start loading
 
-  try {
-    const response = await fetch("https://highlight-server.onrender.com/send", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch("https://highlight-server.onrender.com/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
 
-    const result = await response.json();
+      const result = await response.json()
 
-    if (result.success) {
-      alert("✅ Thank you! Your message has been sent.");
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        studentGrade: "",
-        inquiryType: "",
-        message: "",
-      });
-    } else {
-      alert("❌ Failed to send: " + result.error);
+      if (result.success) {
+        alert("✅ Thank you! Your message has been sent.")
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          studentGrade: "",
+          inquiryType: "",
+          message: "",
+        })
+      } else {
+        alert("❌ Failed to send: " + result.error)
+      }
+    } catch (error) {
+      alert("⚠️ Network error. Try again later.")
+      console.error(error)
+    } finally {
+      setLoading(false) // ✅ Stop loading
     }
-  } catch (error) {
-    alert("⚠️ Network error. Try again later.");
-    console.error(error);
   }
-};
 
   return (
     <>
@@ -167,11 +171,6 @@ export default function ContactPage() {
                     Dagoretti road<br />
                     Nairobi, Kenya
                   </p>
-                  {/* <div className="info-feature">
-                    <span>🚗 Ample Parking</span>
-                    <span>♿ Accessible</span>
-                    <span>🌳 Green Spaces</span>
-                  </div> */}
                 </div>
               </div>
 
@@ -370,11 +369,15 @@ export default function ContactPage() {
                   ></textarea>
                 </div>
 
-                <button type="submit" className="submit-button">
+                <button type="submit" className="submit-button" disabled={loading}>
                   <FaPaperPlane />
-                  {activeTab === 'general' && 'Send Message'}
-                  {activeTab === 'admissions' && 'Start Application'}
-                  {activeTab === 'visit' && 'Schedule Visit'}
+                  {loading
+                    ? "Sending..."
+                    : activeTab === "general"
+                      ? "Send Message"
+                      : activeTab === "admissions"
+                        ? "Start Application"
+                        : "Schedule Visit"}
                 </button>
               </form>
             </div>
@@ -384,43 +387,40 @@ export default function ContactPage() {
 
       {/* Map Section */}
       <section className="section" style={{ backgroundColor: 'var(--light-gray)', padding: '80px 0' }}>
-  <div className="container">
-    <div className="map-section">
-      <div className="map-header" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-        <h2 style={{ color: 'var(--primary-blue)', fontSize: '2.5rem', marginBottom: '1rem' }}>
-          Find Your Way to Excellence
-        </h2>
-        <p style={{ color: 'var(--dark-navy)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto' }}>
-          Our campus is designed to inspire learning and creativity. Come see for yourself!
-        </p>
-      </div>
-      
-      <div className="map-container" style={{ 
-        borderRadius: '1rem', 
-        overflow: 'hidden', 
-        boxShadow: 'var(--shadow-xl)',
-        maxWidth: '1000px',
-        margin: '0 auto'
-      }}>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8199220532565!2d36.69475167448297!3d-1.28180523562022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1bffdea7af55%3A0x7fb474375a32c1a5!2sNew%20Highlight%20School!5e0!3m2!1sen!2ske!4v1758885337027!5m2!1sen!2ske"
-          width="100%"
-          height="450"
-          style={{ border: 0 }}
-          allowFullScreen=""
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="New Highlight School Location"
-        ></iframe>
-      </div>
-      
-      
-    </div>
-  </div>
-</section>
+        <div className="container">
+          <div className="map-section">
+            <div className="map-header" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <h2 style={{ color: 'var(--primary-blue)', fontSize: '2.5rem', marginBottom: '1rem' }}>
+                Find Your Way to Excellence
+              </h2>
+              <p style={{ color: 'var(--dark-navy)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto' }}>
+                Our campus is designed to inspire learning and creativity. Come see for yourself!
+              </p>
+            </div>
+            
+            <div className="map-container" style={{ 
+              borderRadius: '1rem', 
+              overflow: 'hidden', 
+              boxShadow: 'var(--shadow-xl)',
+              maxWidth: '1000px',
+              margin: '0 auto'
+            }}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8199220532565!2d36.69475167448297!3d-1.28180523562022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1bffdea7af55%3A0x7fb474375a32c1a5!2sNew%20Highlight%20School!5e0!3m2!1sen!2ske!4v1758885337027!5m2!1sen!2ske"
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="New Highlight School Location"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <Footer />
-
     </>
   )
 }
