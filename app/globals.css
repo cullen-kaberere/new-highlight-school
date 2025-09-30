@@ -3181,3 +3181,353 @@ textarea:focus {
             font-size: 0.85rem;
           }
         }
+
+
+        /* Hero Section */
+        .academics-hero {
+          background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-navy) 100%);
+          padding: 120px 0 80px;
+          color: white;
+          text-align: center;
+        }
+
+        .hero-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: rgba(255,255,255,0.1);
+          backdrop-filter: blur(10px);
+          padding: 0.75rem 1.5rem;
+          border-radius: 50px;
+          margin-bottom: 2rem;
+          border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero-badge span {
+          font-size: 0.9rem;
+          font-weight: 600;
+          letter-spacing: 1px;
+        }
+
+        .academics-hero h1 {
+          font-size: 3rem;
+          margin-bottom: 1rem;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .academics-hero p {
+          font-size: 1.2rem;
+          max-width: 600px;
+          margin: 0 auto;
+          opacity: 0.9;
+          line-height: 1.6;
+        }
+
+        /* Section Header */
+        .section-header {
+          text-align: center;
+          margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+          color: var(--primary-blue);
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+        }
+
+        .section-header p {
+          color: var(--dark-navy);
+          font-size: 1.1rem;
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+          padding: 80px 0;
+          background: var(--pure-white);
+        }
+
+        .benefits-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 2rem;
+        }
+
+        .benefit-card {
+          text-align: center;
+          padding: 2rem 1.5rem;
+          background: white;
+          border-radius: 12px;
+          box-shadow: var(--shadow-sm);
+          transition: all 0.3s ease;
+          border: 1px solid var(--light-gray);
+        }
+
+        .benefit-card:hover {
+          transform: translateY(-5px);
+          box-shadow: var(--shadow-lg);
+        }
+
+        .benefit-icon {
+          font-size: 3rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .benefit-card h3 {
+          color: var(--dark-navy);
+          margin-bottom: 1rem;
+          font-size: 1.3rem;
+        }
+
+        .benefit-card p {
+          color: var(--medium-gray);
+          line-height: 1.6;
+        }
+
+        /* Learning Section */
+        .learning-section {
+          padding: 80px 0;
+          background: var(--light-gray);
+        }
+
+        .learning-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 1.5rem;
+        }
+
+        .learning-card {
+          background: white;
+          padding: 1.5rem;
+          border-radius: 12px;
+          box-shadow: var(--shadow-sm);
+          transition: all 0.3s ease;
+        }
+
+        .learning-card:hover {
+          transform: translateY(-3px);
+          box-shadow: var(--shadow-md);
+        }
+
+        .card-header {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .area-icon {
+          font-size: 2rem;
+        }
+
+        .learning-card h3 {
+          font-size: 1.2rem;
+          margin: 0;
+        }
+
+        .subjects-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+
+        .subject-item {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.5rem 0;
+        }
+
+        .subject-item span {
+          color: var(--dark-navy);
+          font-size: 0.9rem;
+        }
+
+        /* Assessment Section */
+        .assessment-section {
+          padding: 80px 0;
+          background: var(--pure-white);
+        }
+
+        .assessment-grid {
+          display: grid;
+          grid-template-columns: 1.5fr 1fr;
+          gap: 4rem;
+          align-items: start;
+        }
+
+        .assessment-methods {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
+          margin-top: 2rem;
+        }
+
+        .method h4 {
+          color: var(--primary-blue);
+          margin-bottom: 1rem;
+          font-size: 1.2rem;
+        }
+
+        .method ul {
+          list-style: none;
+          padding: 0;
+        }
+
+        .method li {
+          padding: 0.5rem 0;
+          border-bottom: 1px solid var(--light-gray);
+          color: var(--dark-navy);
+        }
+
+        .method li:last-child {
+          border-bottom: none;
+        }
+
+        .assessment-visual {
+          display: flex;
+          justify-content: center;
+        }
+
+        .visual-card {
+          background: var(--light-gray);
+          padding: 2rem;
+          border-radius: 12px;
+          text-align: center;
+          border: 2px solid var(--primary-blue);
+        }
+
+        .visual-card h3 {
+          color: var(--primary-blue);
+          margin-bottom: 1rem;
+        }
+
+        .visual-card p {
+          color: var(--dark-navy);
+          line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .academics-cta {
+          background: linear-gradient(135deg, green 0%, #160f9f 100%);
+          padding: 80px 0;
+          color: white;
+          text-align: center;
+        }
+
+        .academics-cta h2 {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+        }
+
+        .academics-cta p {
+          font-size: 1.2rem;
+          margin-bottom: 2rem;
+          opacity: 0.9;
+        }
+
+        .cta-buttons {
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .btn {
+          padding: 1rem 2rem;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: 600;
+          transition: all 0.3s ease;
+          border: 2px solid transparent;
+        }
+
+        .btn-primary {
+          background: white;
+          color: var(--accent-red);
+        }
+
+        .btn-primary:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+          background: transparent;
+          color: white;
+          border-color: white;
+        }
+
+        .btn-secondary:hover {
+          background: white;
+          color: var(--accent-red);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+          .assessment-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+          }
+          
+          .assessment-methods {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .academics-hero {
+            padding: 100px 0 60px;
+          }
+
+          .academics-hero h1 {
+            font-size: 2.5rem;
+          }
+
+          .section-header h2 {
+            font-size: 2rem;
+          }
+
+          .benefits-grid,
+          .learning-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .cta-buttons {
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .btn {
+            width: 200px;
+            text-align: center;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .academics-hero h1 {
+            font-size: 2rem;
+          }
+
+          .academics-hero p {
+            font-size: 1.1rem;
+          }
+
+          .section-header h2 {
+            font-size: 1.8rem;
+          }
+
+          .benefit-card,
+          .learning-card {
+            padding: 1.5rem 1rem;
+          }
+
+          .assessment-methods {
+            gap: 1.5rem;
+          }
+
+          .academics-cta h2 {
+            font-size: 2rem;
+          }
+        }
