@@ -1,301 +1,253 @@
+"use client"
 import Navigation from "../../components/Navigation"
 import Footer from "../../components/Footer"
-import { FaCalendarAlt, FaUserCheck, FaClipboardList, FaCheckCircle, FaInfoCircle } from "react-icons/fa"
+import { 
+  FaCalendarAlt, 
+  FaUserCheck, 
+  FaClipboardList, 
+  FaCheckCircle, 
+  FaInfoCircle,
+  FaFileAlt,
+  FaMoneyBillWave,
+  FaClock
+} from "react-icons/fa"
 
 export default function AdmissionsPage() {
+  const processSteps = [
+    {
+      number: 1,
+      title: "Application",
+      description: "Submit your application form with required documents",
+      color: "var(--primary-blue)"
+    },
+    {
+      number: 2,
+      title: "Review",
+      description: "Our team reviews your application and documents",
+      color: "var(--accent-red)"
+    },
+    {
+      number: 3,
+      title: "Visit & Interview",
+      description: "Tour our campus and meet our team",
+      color: "var(--primary-blue)"
+    },
+    {
+      number: 4,
+      title: "Enrollment",
+      description: "Receive admission decision and complete enrollment",
+      color: "var(--accent-red)"
+    }
+  ]
+
+  const importantDates = [
+    {
+      icon: FaCalendarAlt,
+      title: "Application Deadline",
+      date: "Dec 15, 2024",
+      description: "Last day to submit applications"
+    },
+    {
+      icon: FaUserCheck,
+      title: "Admission Results",
+      date: "Jan 10, 2025",
+      description: "Decisions communicated to all applicants"
+    },
+    {
+      icon: FaClipboardList,
+      title: "School Opening",
+      date: "Feb 3, 2025",
+      description: "First term begins with orientation"
+    }
+  ]
+
   return (
     <>
       <Navigation />
 
       {/* Hero Section */}
-      <section className="hero" style={{ padding: "100px 0 60px" }}>
+      <section className="admissions-hero">
         <div className="container">
           <div className="hero-content">
-            <h1 className="text-balance">Admissions</h1>
-            <p className="text-balance">
-              Join the New Highlight School family and give your child the best start in their educational journey
+            <div className="hero-badge">
+              <FaFileAlt />
+              <span>JOIN OUR SCHOOL</span>
+            </div>
+            <h1>Begin Your Child's Educational Journey</h1>
+            <p>
+              Welcome to New Highlight School - where we nurture young minds through quality CBC education 
+              in a supportive, innovative learning environment.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Admission Process Section */}
-      <section className="section">
+      {/* Quick Info Cards */}
+      <section className="quick-info">
         <div className="container">
-          <h2 className="section-title">Admission Process</h2>
-          <p className="section-subtitle">
-            Our straightforward admission process is designed to welcome new families into our school community
-          </p>
-
-          <div className="grid grid-2">
-            <div className="card">
-              <div className="flex items-center gap-md mb-md">
-                <div
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    borderRadius: "50%",
-                    backgroundColor: "var(--primary-blue)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "var(--pure-white)",
-                    fontWeight: "bold",
-                  }}
-                >
-                  1
-                </div>
-                <h3>Application Submission</h3>
+          <div className="info-cards">
+            <div className="info-card">
+              <FaClock style={{ color: 'var(--primary-blue)', fontSize: '2rem' }} />
+              <div>
+                <h3>Age Requirements</h3>
+                <p>PP1: 4 years • PP2: 5 years • Grade 1: 6 years</p>
               </div>
-              <p>
-                Complete and submit the admission application form along with all required documents. Applications can
-                be submitted online or in person at our school office.
-              </p>
             </div>
-
-            <div className="card">
-              <div className="flex items-center gap-md mb-md">
-                <div
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    borderRadius: "50%",
-                    backgroundColor: "var(--accent-red)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "var(--pure-white)",
-                    fontWeight: "bold",
-                  }}
-                >
-                  2
-                </div>
-                <h3>Document Review</h3>
+            <div className="info-card">
+              <FaMoneyBillWave style={{ color: 'var(--accent-red)', fontSize: '2rem' }} />
+              <div>
+                <h3>Flexible Payments</h3>
+                <p>Competitive fees with payment plans available</p>
               </div>
-              <p>
-                Our admissions team will review your application and supporting documents. We may contact you for any
-                additional information or clarification needed.
-              </p>
             </div>
-
-            <div className="card">
-              <div className="flex items-center gap-md mb-md">
-                <div
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    borderRadius: "50%",
-                    backgroundColor: "var(--primary-blue)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "var(--pure-white)",
-                    fontWeight: "bold",
-                  }}
-                >
-                  3
-                </div>
-                <h3>School Visit & Interview</h3>
+            <div className="info-card">
+              <FaUserCheck style={{ color: 'var(--primary-blue)', fontSize: '2rem' }} />
+              <div>
+                <h3>Simple Process</h3>
+                <p>4 easy steps to join our school family</p>
               </div>
-              <p>
-                Schedule a visit to tour our facilities and meet with our staff. This helps us understand your child's
-                needs and allows you to experience our school environment.
-              </p>
-            </div>
-
-            <div className="card">
-              <div className="flex items-center gap-md mb-md">
-                <div
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    borderRadius: "50%",
-                    backgroundColor: "var(--accent-red)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "var(--pure-white)",
-                    fontWeight: "bold",
-                  }}
-                >
-                  4
-                </div>
-                <h3>Admission Decision</h3>
-              </div>
-              <p>
-                You will receive our admission decision within 5-7 working days. Successful applicants will receive
-                enrollment information and next steps.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Requirements Section */}
-      <section className="section" style={{ backgroundColor: "var(--light-gray)" }}>
+      {/* Process Section */}
+      <section className="process-section">
         <div className="container">
-          <h2 className="section-title">Admission Requirements</h2>
+          <div className="section-header">
+            <h2>Simple Admission Process</h2>
+            <p>Four straightforward steps to join our school community</p>
+          </div>
 
-          <div className="grid grid-2">
-            <div>
-              <h3 style={{ color: "var(--primary-blue)" }}>Required Documents</h3>
-              <div className="flex flex-col gap-sm mb-lg">
-                <div className="flex items-center gap-sm">
-                  <FaCheckCircle size={16} color="var(--accent-red)" />
-                  <span>Completed admission application form</span>
+          <div className="process-steps">
+            {processSteps.map((step, index) => (
+              <div key={index} className="process-step">
+                <div className="step-number" style={{ backgroundColor: step.color }}>
+                  {step.number}
                 </div>
-                <div className="flex items-center gap-sm">
-                  <FaCheckCircle size={16} color="var(--accent-red)" />
-                  <span>Child's birth certificate (original and copy)</span>
+                <div className="step-content">
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
                 </div>
-                <div className="flex items-center gap-sm">
-                  <FaCheckCircle size={16} color="var(--accent-red)" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Requirements & Fees */}
+      <section className="requirements-section">
+        <div className="container">
+          <div className="requirements-grid">
+            {/* Requirements */}
+            <div className="requirements-card">
+              <h3>Required Documents</h3>
+              <div className="documents-list">
+                <div className="document-item">
+                  <FaCheckCircle style={{ color: 'var(--accent-red)' }} />
+                  <span>Completed application form</span>
+                </div>
+                <div className="document-item">
+                  <FaCheckCircle style={{ color: 'var(--accent-red)' }} />
+                  <span>Birth certificate (copy)</span>
+                </div>
+                <div className="document-item">
+                  <FaCheckCircle style={{ color: 'var(--accent-red)' }} />
                   <span>Immunization records</span>
                 </div>
-                <div className="flex items-center gap-sm">
-                  <FaCheckCircle size={16} color="var(--accent-red)" />
-                  <span>Previous school reports (if applicable)</span>
+                <div className="document-item">
+                  <FaCheckCircle style={{ color: 'var(--accent-red)' }} />
+                  <span>Previous school reports</span>
                 </div>
-                <div className="flex items-center gap-sm">
-                  <FaCheckCircle size={16} color="var(--accent-red)" />
-                  <span>Parent/guardian identification documents</span>
+                <div className="document-item">
+                  <FaCheckCircle style={{ color: 'var(--accent-red)' }} />
+                  <span>Parent ID documents</span>
                 </div>
-                <div className="flex items-center gap-sm">
-                  <FaCheckCircle size={16} color="var(--accent-red)" />
-                  <span>Recent passport-size photographs (4 copies)</span>
-                </div>
-              </div>
-
-              <h3 style={{ color: "var(--accent-red)" }}>Age Requirements</h3>
-              <div className="flex flex-col gap-sm">
-                <div className="flex items-center gap-sm">
-                  <FaInfoCircle size={16} color="var(--primary-blue)" />
-                  <span>Pre-Primary 1 (PP1): 4 years by January 1st</span>
-                </div>
-                <div className="flex items-center gap-sm">
-                  <FaInfoCircle size={16} color="var(--primary-blue)" />
-                  <span>Pre-Primary 2 (PP2): 5 years by January 1st</span>
-                </div>
-                <div className="flex items-center gap-sm">
-                  <FaInfoCircle size={16} color="var(--primary-blue)" />
-                  <span>Grade 1: 6 years by January 1st</span>
+                <div className="document-item">
+                  <FaCheckCircle style={{ color: 'var(--accent-red)' }} />
+                  <span>4 passport photos</span>
                 </div>
               </div>
             </div>
 
-            <div className="card">
-              <h3 style={{ color: "var(--primary-blue)" }}>Fee Structure</h3>
-              <p className="mb-md">Our competitive fee structure includes:</p>
-
-              <div className="mb-lg">
-                <h4 style={{ color: "var(--accent-red)" }}>Tuition Fees (Per Term)</h4>
-                <div className="flex flex-col gap-sm mb-md">
-                  <div className="flex justify-between">
-                    <span>Pre-Primary (PP1 & PP2)</span>
-                    <strong>KSh 25,000</strong>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Lower Primary (Grade 1-3)</span>
-                    <strong>KSh 30,000</strong>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Upper Primary (Grade 4-6)</span>
-                    <strong>KSh 35,000</strong>
-                  </div>
+            {/* Fee Structure */}
+            <div className="fees-card">
+              <h3>Fee Structure (Per Term)</h3>
+              <div className="fees-list">
+                <div className="fee-item">
+                  <span className="fee-grade">Pre-Primary (PP1 & PP2)</span>
+                  <span className="fee-amount">KSh 25,000</span>
+                </div>
+                <div className="fee-item">
+                  <span className="fee-grade">Lower Primary (Grade 1-3)</span>
+                  <span className="fee-amount">KSh 30,000</span>
+                </div>
+                <div className="fee-item">
+                  <span className="fee-grade">Upper Primary (Grade 4-6)</span>
+                  <span className="fee-amount">KSh 35,000</span>
                 </div>
               </div>
-
-              <div>
-                <h4 style={{ color: "var(--primary-blue)" }}>Additional Fees</h4>
-                <div className="flex flex-col gap-sm">
-                  <div className="flex justify-between">
-                    <span>Registration Fee (One-time)</span>
-                    <strong>KSh 5,000</strong>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Activity Fee (Per Term)</span>
-                    <strong>KSh 3,000</strong>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Lunch Program (Optional)</span>
-                    <strong>KSh 8,000</strong>
-                  </div>
+              
+              <div className="additional-fees">
+                <h4>Additional Fees</h4>
+                <div className="fee-item">
+                  <span>Registration (One-time)</span>
+                  <span>KSh 5,000</span>
+                </div>
+                <div className="fee-item">
+                  <span>Activity Fee</span>
+                  <span>KSh 3,000</span>
                 </div>
               </div>
-
-              <div className="mt-md">
-                <p style={{ fontSize: "0.9rem", color: "var(--medium-gray)" }}>
-                  * Fees are subject to review annually. Payment plans available upon request.
-                </p>
-              </div>
+              
+              <p className="fee-note">* Payment plans and sibling discounts available</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Important Dates Section */}
-      <section className="section">
+      {/* Important Dates */}
+      <section className="dates-section">
         <div className="container">
-          <h2 className="section-title">Important Dates</h2>
+          <div className="section-header">
+            <h2>Important Dates</h2>
+            <p>Key timelines for the 2025 academic year</p>
+          </div>
 
-          <div className="grid grid-3">
-            <div className="card text-center">
-              <div className="flex justify-center mb-md">
-                <FaCalendarAlt size={48} color="var(--primary-blue)" />
+          <div className="dates-grid">
+            {importantDates.map((date, index) => (
+              <div key={index} className="date-card">
+                <div className="date-icon">
+                  <date.icon />
+                </div>
+                <h3>{date.title}</h3>
+                <div className="date-display">{date.date}</div>
+                <p>{date.description}</p>
               </div>
-              <h3>Application Deadline</h3>
-              <p style={{ color: "var(--accent-red)", fontWeight: "600", fontSize: "1.125rem" }}>December 15, 2024</p>
-              <p>Final date for submitting admission applications for the 2025 academic year.</p>
-            </div>
-
-            <div className="card text-center">
-              <div className="flex justify-center mb-md">
-                <FaUserCheck size={48} color="var(--accent-red)" />
-              </div>
-              <h3>Admission Results</h3>
-              <p style={{ color: "var(--primary-blue)", fontWeight: "600", fontSize: "1.125rem" }}>January 10, 2025</p>
-              <p>Admission decisions will be communicated to all applicants by this date.</p>
-            </div>
-
-            <div className="card text-center">
-              <div className="flex justify-center mb-md">
-                <FaClipboardList size={48} color="var(--primary-blue)" />
-              </div>
-              <h3>School Opening</h3>
-              <p style={{ color: "var(--accent-red)", fontWeight: "600", fontSize: "1.125rem" }}>February 3, 2025</p>
-              <p>First term of the 2025 academic year begins. Orientation for new students.</p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Contact for Admissions */}
-      <section className="section" style={{ backgroundColor: "var(--primary-blue)", color: "var(--pure-white)" }}>
-        <div className="container text-center">
-          <h2 style={{ color: "var(--pure-white)" }}>Ready to Apply?</h2>
-          <p style={{ color: "rgba(255, 255, 255, 0.9)", fontSize: "1.125rem" }} className="mb-xl">
-            Start your child's journey with us today. Contact our admissions office for more information.
-          </p>
-          <div className="flex gap-md justify-center">
-            <a href="/contact" className="btn btn-accent">
-              Contact Admissions
-            </a>
-            <a
-              href="#"
-              className="btn"
-              style={{
-                backgroundColor: "transparent",
-                color: "var(--pure-white)",
-                border: "2px solid var(--pure-white)",
-              }}
-            >
-              Download Application
-            </a>
+      {/* CTA Section */}
+      <section className="admissions-cta">
+        <div className="container">
+          <div className="cta-content">
+            <h2>Ready to Join Our School Family?</h2>
+            <p>Start your child's journey towards academic excellence today</p>
+            <div className="cta-buttons">
+              <a href="/contact" className="btn btn-primary">Start Application</a>
+              <a href="/contact" className="btn btn-secondary">Schedule Visit</a>
+            </div>
           </div>
         </div>
       </section>
 
       <Footer />
+
+      <style jsx>{`
+        
+      `}</style>
     </>
   )
 }
