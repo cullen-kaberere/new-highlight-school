@@ -55,6 +55,10 @@ export default function Footer() {
                   {/* <FaArrowRight className="link-icon" /> */}
                   Contact & Visit
                 </Link>
+                <Link href="/careers" className="footer-link">
+                  {/* <FaArrowRight className="link-icon" /> */}
+                  Careers
+                </Link>
               </div>
             </div>
 
