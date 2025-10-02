@@ -214,9 +214,8 @@ export default function AcademicsPage() {
 
       <Footer />
 
-      <style jsx>{`
-        
-      `}</style>
+      
+      
     </>
   )
 }

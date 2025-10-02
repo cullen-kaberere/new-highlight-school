@@ -245,9 +245,7 @@ export default function AdmissionsPage() {
 
       <Footer />
 
-      <style jsx>{`
-        
-      `}</style>
+
     </>
   )
 }
