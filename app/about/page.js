@@ -310,10 +310,10 @@ export default function AboutPage() {
                 SM
               </div>
               <div className="leader-info">
-                <h4 style={{ color: 'var(--primary-blue)' }}>Ms. Sarah Mwangi</h4>
-                <p style={{ color: 'var(--accent-red)', fontWeight: '600' }}>Academic Coordinator</p>
+                <h4 style={{ color: 'var(--primary-blue)' }}>M. W Kariuki</h4>
+                <p style={{ color: 'var(--accent-red)', fontWeight: '600' }}>Director</p>
                 <p style={{ color: 'var(--dark-navy)', fontSize: '0.9rem' }}>
-                  Language expert who believes every child has a unique voice waiting to be heard.
+                  Visionary leader with a commitment to educational excellence and community impact.
                 </p>
                 <div className="leader-badge">B.Ed Languages</div>
               </div>
